@@ -7,7 +7,7 @@ func makeUndirected(g map[string][]Edge) map[string][]Edge {
 		undirected[from] = append(undirected[from], edges...)
 		// Add reverse edges
 		for _, e := range edges {
-			undirected[e.To] = append(undirected[e.To], Edge{To: from, Weight: e.Weight})
+			undirected[e.To] = append(undirected[e.To], Edge{To: from, Distance: e.Distance})
 		}
 	}
 	return undirected

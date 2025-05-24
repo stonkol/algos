@@ -5,8 +5,8 @@
 package main
 
 type Edge struct {
-	To     string
-	Weight int
+	To       string
+	Distance int
 }
 
 var graph = map[string][]Edge{

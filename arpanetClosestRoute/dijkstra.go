@@ -64,7 +64,7 @@ func Dijkstra(graph map[string][]Edge, start, end string) ([]string, int, error)
 			break
 		}
 		for _, edge := range graph[current.node] {
-			alt := dist[current.node] + edge.Weight
+			alt := dist[current.node] + edge.Distance
 			if alt < dist[edge.To] {
 				dist[edge.To] = alt
 				prev[edge.To] = current.node
