@@ -7,18 +7,25 @@ import (
 	"strings"
 )
 
+func normalizeName(input string) string {
+	return strings.Title(strings.ToLower(input))
+}
+
 func main() {
+	// Create undirected graph from directed graph
+	undirectedGraph := makeUndirected(graph)
+
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Print("Enter start point: ")
 	startInput, _ := reader.ReadString('\n')
-	start := strings.TrimSpace(startInput)
+	start := normalizeName(strings.TrimSpace(startInput))
 
 	fmt.Print("Enter end point: ")
 	endInput, _ := reader.ReadString('\n')
-	end := strings.TrimSpace(endInput)
+	end := normalizeName(strings.TrimSpace(endInput))
 
-	path, dist, err := Dijkstra(graph, start, end)
+	path, dist, err := Dijkstra(undirectedGraph, start, end)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
